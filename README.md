@@ -21,13 +21,13 @@ Below Julia packages should be preinstalled:
 `julia [-p n] redentor.jl <parameters>`
 
 ### Parameters:
-`--bam (or -b) file1.bam,file2.bam,...` Input mapped bam file (sorted by coordinate). For multiple files input, seperate them with comma. 
-`--id  (or -i) id1,id2,...` ID of each sample. Should be the same number as bam files. 
-`--output (or -o)` The directory for the output. Should be pre-created. 
-`--genome (or -g)` hg38|mm10 The sequenced genome type. Only support hg38 and mm10 so far. 
-`--annotation (or -a)` file.gtf The transcription annotation file. Tested on Ensembl annotation. 
-`--seqstrand (or -s)` first|second|none  The sequenced strand. Optional (default="none"). 
-`-p thread_n` Assign thread number. It is a Julia parameter and should be putted between `julia` and `redentor.jl`. Optional (default=1). 
+ `--bam (or -b) file1.bam,file2.bam,...` Input mapped bam file (sorted by coordinate). For multiple files input, seperate them with comma.
+ `--id  (or -i) id1,id2,...` ID of each sample. Should be the same number as bam files.
+ `--output (or -o)` The directory for the output. Should be pre-created.
+ `--genome (or -g)` hg38|mm10 The sequenced genome type. Only support hg38 and mm10 so far.
+ `--annotation (or -a)` file.gtf The transcription annotation file. Tested on Ensembl annotation.
+ `--seqstrand (or -s)` first|second|none  The sequenced strand. Optional (default="none").
+ `-p thread_n` Assign thread number. It is a Julia parameter and should be putted between `julia` and `redentor.jl`. Optional (default=1).
 
 ## Output
 RAT_info.tsv, RAT_readcount.tsv, and RAT_RPKM.tsv are the information, read count, and read per kilobase of transcript, per million mapped reads of all detected RATs. For the RAT gene structure, see work/StringTieMerged.gtf.
