@@ -5,12 +5,12 @@ This pipeline was coded in Julia language. User need map the RNA-seq data first 
 
 ## Dependencies
 ### Software
-Below softwares need to be preinstalled:
+Below softwares are required:
 - [Julia](https://julialang.org/) v1.2.0 above
 - [StringTie](https://ccb.jhu.edu/software/stringtie/)
 - [HTSeq](https://htseq.readthedocs.io/en/release_0.11.1/)
 
-Below Julia packages should be preinstalled:
+Below Julia packages are required:
 - [SortingAlgorithms.jl](https://github.com/JuliaCollections/SortingAlgorithms.jl)
 
 ### Data
