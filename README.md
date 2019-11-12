@@ -20,7 +20,7 @@ Below Julia packages are required:
 ## Usage
 `julia [-p n] redentor.jl <parameters>`
 
-### Parameters:
+### Input
 - `--bam (or -b) file1.bam,file2.bam,...` Input mapped bam file (sorted by coordinate). For multiple files input, seperate them with comma.
 - `--id  (or -i) id1,id2,...` ID of each sample. Should be the same number as bam files.
 - `--output (or -o)` The directory for the output. Should be pre-created.
@@ -29,5 +29,5 @@ Below Julia packages are required:
 - `--seqstrand (or -s)` first|second|none  The sequenced strand. Optional (default="none").
 - `-p thread_n` Assign thread number. It is a Julia parameter and should be putted between `julia` and `redentor.jl`. Optional (default=1).
 
-## Output
+### Output
 RAT_info.tsv, RAT_readcount.tsv, and RAT_RPKM.tsv are the information, read count, and read per kilobase of transcript, per million mapped reads of all detected RATs. For the RAT gene structure, see work/StringTieMerged.gtf.
