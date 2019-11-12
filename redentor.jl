@@ -1,7 +1,7 @@
 using Distributed
 @everywhere include((@__DIR__)*"/libs/my.jl")
 
-@everywhere module REDENToR
+@everywhere module REDENToR #A supportive module for biodata handling.
 using Distributed
 using DelimitedFiles #for writedlm
 using Printf
@@ -21,6 +21,7 @@ function main()
     software_check()
     run_assemble_and_count()
     prepare_output()
+    println("[REDNEToR] All finished.")
 end
 #}}
 #{{ parse_arguments
@@ -78,8 +79,8 @@ end
 #}}
 #{{ software_check
 function software_check()
-    success(`stringtie --version`) || error("Samtools unfound.")
-    success(`htseq-count -h`) || error("THSeq unfound.")
+    success(`stringtie --version`) || error("Cannot find Samtools.")
+    success(`htseq-count -h`) || error("Cannot find THSeq.")
 end
 #}}
 #{{ run_assemble_and_count
@@ -169,7 +170,6 @@ function prepare_output()
         ([minimum(x[:, 1]) maximum(x[:, 2])],
          sum(seglen(segunion(x)[1])))
     end
-    # jsave("detected_transcriptions_byGene", ge)
 
     #Read HTSeq output
     C=map(IDs) do lb
@@ -195,7 +195,6 @@ function prepare_output()
                   "associated_Ensembl_gene_id"=>map(x->startswith(x, "MSTRG") ? x : "", rt["geneid"]))
              )
 
-    println("[REDNEToR] All finished.")
 end
 #}}
 #{{ print_help
