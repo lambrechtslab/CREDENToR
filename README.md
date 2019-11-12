@@ -24,7 +24,7 @@ Below Julia package is required:
 
 ### Input
 - `--bam` (or `-b`) _\<file1.bam,file2.bam,...\>_ Input mapped bam file (sorted by coordinate). For multiple files input, seperate them with comma.
-- `--id`  (or `-i`) _\<id1,id2,...\>_ ID of each sample. Should be the same number as bam files.
+- `--id`  (or `-i`) _\<id1,id2,...\>_ ID of each sample. Should be the same length as bam files.
 - `--output` (or `-o`) _\<dir\>_ The directory for the output. Should be pre-created.
 - `--genome` (or `-g`) `hg38`|`mm10` The sequenced genome type. Only support hg38 and mm10 so far.
 - `--annotation` (or `-a`) _\<file.gtf\>_ The transcription annotation file. Tested on Ensembl annotation.
