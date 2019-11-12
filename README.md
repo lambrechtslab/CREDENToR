@@ -1,7 +1,7 @@
 # REDENToR
 **A pipeline to quantify retrotransposon-associated transcriptions (RAT).**
 
-This pipeline was coded in Julia language. User need map the RNA-seq data first (hg38 or mm10, using STAR is recommended).In REDENToR, transcriptomes were subsequently assembled using StringTie, under guidance of the transcript annotation (Ensembl is recommended). All de novo assembled transcription annotations from the given samples were merged using “StringTie --merge”. HTSeq-counts were used to count the read numbers of known and novel genes. Non-coding transcripts (transcripts not overlapping annotated coding genes) in the merged transcription annotations were assigned as RATs when any of its exons overlapped with a retrotransposon repeat annotation (LTR, LINE, or SINE, based on RepeatMasker annotation from UCSC). If a transcript overlapped with >1 annotated repeat, the retrotransposon with the highest overlap was assigned to this RAT.
+This pipeline was coded in Julia language. Users need to map the RNA-seq data first (hg38 or mm10, using STAR is recommended).In REDENToR, transcriptomes were subsequently assembled using StringTie, under guidance of the transcript annotation (Ensembl is recommended). All de novo assembled transcription annotations from the given samples were merged using “StringTie --merge”. HTSeq-counts were used to count the read numbers of known and novel genes. Non-coding transcripts (transcripts not overlapping annotated coding genes) in the merged transcription annotations were assigned as RATs when any of its exons overlapped with a retrotransposon repeat annotation (LTR, LINE, or SINE, based on RepeatMasker annotation from UCSC). If a transcript overlapped with >1 annotated repeat, the retrotransposon with the highest overlap was assigned to this RAT.
 
 ## Dependencies
 ### Software
@@ -31,3 +31,6 @@ Below Julia packages are required:
 
 ### Output
 RAT_info.tsv, RAT_readcount.tsv, and RAT_RPKM.tsv are the information, read count, and read per kilobase of transcript, per million mapped reads of all detected RATs. For the RAT gene structure, see work/StringTieMerged.gtf.
+
+### Tips
+- When the pipeline is interupted and rerun in the same folder, the previous finished steps will be skipped.
