@@ -35,4 +35,4 @@ Below Julia package is required:
 `RAT_info.tsv`, `RAT_readcount.tsv`, and `RAT_RPKM.tsv` are the information, read count, and read per kilobase of transcript, per million mapped reads of all detected RATs, respectively. For the RAT gene structure, please see `work/StringTieMerged.gtf`.
 
 ### Tips
-- When the pipeline is interupted and rerun in the same folder, the previous finished steps will be skipped.
+- When the pipeline is interupted and rerun in the same folder, the previously finished steps will be skipped.
