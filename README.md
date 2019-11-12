@@ -8,7 +8,7 @@ This pipeline was coded in Julia language. Users need to map the RNA-seq data fi
 ## Dependencies
 ### Software
 Below softwares are required:
-- [Julia](https://julialang.org/) v1.2.0 above
+- [Julia](https://julialang.org/) v1.2.0+
 - [StringTie](https://ccb.jhu.edu/software/stringtie/)
 - [HTSeq](https://htseq.readthedocs.io/en/release_0.11.1/)
 
