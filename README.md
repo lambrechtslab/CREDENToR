@@ -1,11 +1,11 @@
 # REDENToR
-A pipeline to quantify retrotransposon-associated transcriptions (RAT).
+**A pipeline to quantify retrotransposon-associated transcriptions (RAT).**
 
 This pipeline was coded in Julia language. User need map the RNA-seq data first (hg38 or mm10, using STAR is recommended).In REDENToR, transcriptomes were subsequently assembled using StringTie, under guidance of the transcript annotation (Ensembl is recommended). All de novo assembled transcription annotations from the given samples were merged using “StringTie --merge”. HTSeq-counts were used to count the read numbers of known and novel genes. Non-coding transcripts (transcripts not overlapping annotated coding genes) in the merged transcription annotations were assigned as RATs when any of its exons overlapped with a retrotransposon repeat annotation (LTR, LINE, or SINE, based on RepeatMasker annotation from UCSC). If a transcript overlapped with >1 annotated repeat, the retrotransposon with the highest overlap was assigned to this RAT.
 
-## Prerequirement
+## Dependencies
 ### Software
-Below softwares should be preinstalled and be in $PATH:
+Below softwares need to be preinstalled:
 - [Julia](https://julialang.org/) v1.2.0 above
 - [StringTie](https://ccb.jhu.edu/software/stringtie/)
 - [HTSeq](https://htseq.readthedocs.io/en/release_0.11.1/)
