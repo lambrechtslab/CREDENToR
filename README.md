@@ -1,7 +1,7 @@
 # REDENToR
 **A pipeline to quantify retrotransposon-associated transcriptions (RAT).**
 
-This pipeline was coded in Julia language. Users need to map the RNA-seq data first (hg38 or mm10, using STAR is recommended).In REDENToR, transcriptomes were subsequently assembled using StringTie, under guidance of the transcript annotation (Ensembl is recommended). All de novo assembled transcription annotations from the given samples were merged using “StringTie --merge”. HTSeq-counts were used to count the read numbers of known and novel genes. Non-coding transcripts (transcripts not overlapping annotated coding genes) in the merged transcription annotations were assigned as RATs when any of its exons overlapped with a retrotransposon repeat annotation (LTR, LINE, or SINE, based on RepeatMasker annotation from UCSC). If a transcript overlapped with >1 annotated repeat, the retrotransposon with the highest overlap was assigned to this RAT.
+This pipeline was coded in Julia language. Users need to map the RNA-seq data first (hg38 or mm10, using STAR is recommended). In REDENToR, transcriptomes were subsequently assembled using StringTie, under guidance of the transcript annotation (Ensembl is recommended). All de novo assembled transcription annotations from the given samples were merged using “StringTie --merge”. HTSeq-counts were used to count the read numbers of known and novel genes. Non-coding transcripts (transcripts not overlapping annotated coding genes) in the merged transcription annotations were assigned as RATs when any of its exons overlapped with a retrotransposon repeat annotation (LTR, LINE, or SINE, based on RepeatMasker annotation from UCSC). If a transcript overlapped with >1 annotated repeat, the retrotransposon with the highest overlap was assigned to this RAT.
 
 ## Dependencies
 ### Software
@@ -10,15 +10,15 @@ Below softwares are required:
 - [StringTie](https://ccb.jhu.edu/software/stringtie/)
 - [HTSeq](https://htseq.readthedocs.io/en/release_0.11.1/)
 
-Below Julia packages are required:
+Below Julia package is required:
 - [SortingAlgorithms.jl](https://github.com/JuliaCollections/SortingAlgorithms.jl)
 
 ### Data
-- Mapped bam files, sorted by coordinates;
-- ENSEMBL GTF file;
+- Mapped bam file(s), sorted by coordinates;
+- ENSEMBL GTF file.
 
 ## Usage
-`julia [-p n] redentor.jl <parameters>`
+`julia `_\[_`-p `_n \]_` redentor.jl `_\<parameters\>_
 
 ### Input
 - `--bam (or -b) file1.bam,file2.bam,...` Input mapped bam file (sorted by coordinate). For multiple files input, seperate them with comma.
