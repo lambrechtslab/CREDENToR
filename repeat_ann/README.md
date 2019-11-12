@@ -1,0 +1,1 @@
+This folder contains the repeat annotatons of LTR, LINE and SINE in human and mouse. It was adopted from repeatMasker, downloaded from UCSC database. The `rep_recNo` column is used to link the nested repeats, which is adopted from nestedRepeats.txt in UCSC database.
