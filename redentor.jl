@@ -110,7 +110,7 @@ function run_assemble_and_count()
         println("[REDENToR] $lb-htseq.tsv is preexisted. Skip....")
     end
     strandarg=SEQSTRAND==:second ? "yes" : SEQSTRAND==:first ? "reverse" : "no"
-    pmapwd(IDs[.!l], BAMs[.!l], env=(strandarg, OUTPUT_PATH)) do lb, bam, strandarg, OUTPUT_PATH
+    (THREAD>1 ? pmapwd : foreach)(IDs[.!l], BAMs[.!l], env=(strandarg, OUTPUT_PATH)) do lb, bam, strandarg, OUTPUT_PATH
         runstr("htseq-count -f bam -s $strandarg -r pos $bam $OUTPUT_PATH/work/StringTieMerged.gtf > $OUTPUT_PATH/work/$lb-htseq.tsv.tmp")
         runstr("mv $OUTPUT_PATH/work/$lb-htseq.tsv.tmp $OUTPUT_PATH/work/$lb-htseq.tsv")
         nothing
@@ -202,15 +202,15 @@ function print_help()
     helpdoc="""
 REDENToR v0.1.0 usage:
 julia [-p n] redentor.jl <parameters...>
-A pipeline to quantificate retrotransposon-associated transcriptions.
+A bioinformatics pipeline to detect and quantify cryptic transcripts (CTs) associated with retrotranspon repeats.
 Parameters:
---bam (or -b) file1.bam,file2.bam,... Input mapped bam file (sorted by coordinate). For multiple files input, seperate them with comma.
---id  (or -i) id1,id2,... ID of each sample. Should be the same number as bam files.
+--bam (or -b) file1.bam,file2.bam,... Input mapped bam file (sorted by coordinate). Multiple input files should be seperated with a comma.
+--id  (or -i) id1,id2,... ID of each sample. Should be the same length as bam files.
 --output (or -o) The directory for the output. Should be pre-created.
---genome (or -g) hg38|mm10 The sequenced genome type. Only support hg38 and mm10 so far.
---annotation (or -a) file.gtf The transcription annotation file. Tested on Ensembl annotation.
+--genome (or -g) hg38|mm10 The sequenced genome type. Only hg38 and mm10 are supported so far.
+--annotation (or -a) file.gtf The transcription annotation file. Tested on Ensembl annotation only.
 --seqstrand (or -s) first|second|none  The sequenced strand. Optinal (default="none").
--p thread_n Assign thread number. It is a Julia parameter and should be putted between `julia` and `redentor.jl. Optional (default=1).
+-p thread_n Assign thread number. A Julia parameter that should be put between `julia' and `redentor.jl'. Optional (default=1).
 """
     println(helpdoc)
 end
