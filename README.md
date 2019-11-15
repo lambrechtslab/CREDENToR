@@ -1,9 +1,9 @@
 # REDENToR 
 _(**R**etrotransposable **E**lements’ **D**ifferential **E**xpression by de **N**ovo **T**ranscript**o**me **R**econstruction)_
 
-**A bioinformatics pipeline to quantify retrotransposon-associated cryptic transcripts (CTs).**
+**A bioinformatics pipeline to detect and quantify cryptic transcripts (CTs) associated with retrotransposons.**
 
-This pipeline was coded in Julia language. Users need to map the RNA-seq data first (hg38 or mm10, using STAR is recommended). In REDENToR, transcriptomes were subsequently assembled using StringTie, under guidance of the transcript annotation (Ensembl is recommended). All de novo assembled transcription annotations from the given samples were merged using “StringTie --merge”. HTSeq-counts were used to count the read numbers of known and novel genes. Non-coding transcripts (transcripts not overlapping annotated coding genes) in the merged transcription annotations were assigned as CTs when any of its exons overlapped with a retrotransposon repeat annotation (LTR, LINE, or SINE, based on RepeatMasker annotation from UCSC). If a transcript overlapped with >1 annotated repeat, the retrotransposon with the highest overlap was assigned to this RAT.
+This pipeline was coded in Julia language. Users need to map the RNA-seq data first (hg38 or mm10, using STAR is recommended). In REDENToR, transcriptomes were subsequently assembled using StringTie, under guidance of the transcript annotation (Ensembl is recommended). All de novo assembled transcription annotations from the given samples were merged using “StringTie --merge”. HTSeq-counts were used to count the read numbers of known and novel genes. Non-coding transcripts (transcripts not overlapping annotated coding genes) in the merged transcription annotations were assigned as CTs when any of its exons overlapped with a retrotransposon repeat annotation (LTR, LINE, or SINE, based on RepeatMasker annotation from UCSC). If a transcript overlapped with >1 annotated repeat, the retrotransposon with the highest overlap was assigned to this CT.
 
 ## Dependencies
 ### Software
