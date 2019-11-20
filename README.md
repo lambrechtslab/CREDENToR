@@ -1,5 +1,5 @@
-# REDENToR 
-_(**R**etrotransposable **E**lements’ **D**ifferential **E**xpression by de **N**ovo **T**ranscript**o**me **R**econstruction)_
+# CREDENToR 
+_(**CR**yptic **E**lements’ **D**ifferential **E**xpression by de **N**ovo **T**ranscript**o**me **R**econstruction)_
 
 **A bioinformatics pipeline to detect and quantify cryptic transcripts (CTs) associated with retrotranspon repeats.**
 
