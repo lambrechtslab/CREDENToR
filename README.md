@@ -20,7 +20,7 @@ The Julia package below is required:
 - ENSEMBL GTF file.
 
 ## Usage
-`julia `_\[_`-p `_n \]_` redentor.jl `_\<parameters\>_
+`julia `_\[_`-p `_n \]_` credentor.jl `_\<parameters\>_
 
 ### Input
 - `--bam` (or `-b`) _\<file1.bam,file2.bam,...\>_ Input mapped bam file (sorted by coordinate). Multiple input files should be seperated with a comma.
