@@ -200,9 +200,9 @@ end
 #{{ print_help
 function print_help()
     helpdoc="""
-REDENToR v0.1.0 usage:
+CREDENToR v0.1.0 usage:
 julia [-p n] redentor.jl <parameters...>
-A bioinformatics pipeline to detect and quantify cryptic transcripts (CTs) associated with retrotranspon repeats.
+A bioinformatics pipeline to detect and quantify cryptic transcripts associated with retrotranspon repeats.
 Parameters:
 --bam (or -b) file1.bam,file2.bam,... Input mapped bam file (sorted by coordinate). Multiple input files should be seperated with a comma.
 --id  (or -i) id1,id2,... ID of each sample. Should be the same length as bam files.
@@ -210,6 +210,8 @@ Parameters:
 --genome (or -g) hg38|mm10 The sequenced genome type. Only hg38 and mm10 are supported so far.
 --annotation (or -a) file.gtf The transcription annotation file. Tested on Ensembl annotation only.
 --seqstrand (or -s) first|second|none  The sequenced strand. Optinal (default="none").
+--version (or -v) Print version information.
+--help (or -h) Print help.
 -p thread_n Assign thread number. A Julia parameter that should be put between `julia' and `redentor.jl'. Optional (default=1).
 """
     println(helpdoc)
