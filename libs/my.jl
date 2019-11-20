@@ -1,4 +1,4 @@
-# Youtiao module is designed to facilitate biological data analysis in general purpose. It needs to be cleaned specifically for REDENToR pipeline in the future.
+# Youtiao module is designed to facilitate biology data analysis in general purpose. It needs to be cleaned specifically for CREDENToR pipeline in the future.
 
 module Youtiao
 using SortingAlgorithms
