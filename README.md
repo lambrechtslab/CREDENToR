@@ -31,6 +31,8 @@ The Julia package below is required:
 - `--seqstrand` (or `-s`) `first`|`second`|`none`  The sequenced strand. Optional (default="none").
   - `first` : Assumes a stranded library fr-firststrand.
   - `second`: Assumes a stranded library fr-secondstrand.
+- `--help` (or `-h`) Print help document.
+- `--version` (or `-v`) Print version.
 - `-p` _\<thread_num\>_ Assign thread number. A Julia parameter that should be put between `julia` and `redentor.jl`. Optional (default=1).
 
 ### Output
