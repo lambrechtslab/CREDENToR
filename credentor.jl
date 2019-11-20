@@ -1,7 +1,7 @@
 using Distributed
 @everywhere include((@__DIR__)*"/libs/my.jl")
 
-@everywhere module REDENToR #A supportive module for biodata handling.
+@everywhere module CREDENToR #A supportive module for biodata handling.
 using Distributed
 using DelimitedFiles #for writedlm
 using Printf
@@ -21,7 +21,7 @@ function main()
     software_check()
     run_assemble_and_count()
     prepare_output()
-    println("[REDNEToR] All finished.")
+    println("[CREDNEToR] All finished.")
 end
 #}}
 #{{ parse_arguments
@@ -65,7 +65,7 @@ function parse_arguments()
     length(BAMs)==length(IDs) || error("Bam files and IDs have not the same number, or any of them is not assigned.")
     if !isdir(OUTPUT_PATH)
         mkpath(OUTPUT_PATH)
-        println("[REDENToR] Cannot find output path $OUTPUT_PATH. Created.")
+        println("[CREDENToR] Cannot find output path $OUTPUT_PATH. Created.")
     end
     isfile(GTF) || error("Cannot find GTF file at "*GTF)
     in(SEQSTRAND, [:none, :first, :second]) || error("Invalid --seqstrand "*SEQSTRAND)
@@ -88,26 +88,26 @@ function run_assemble_and_count()
     strandtag=SEQSTRAND==:second ? "--fr" : SEQSTRAND==:first ? "--rf" : ""
     mkpath("$OUTPUT_PATH/work/")
     if isfile("$OUTPUT_PATH/work/StringTieMerged.gtf")
-        println("[REDENToR] StringTieMerged.gtf is preexisted. Skip....")
+        println("[CREDENToR] StringTieMerged.gtf is preexisted. Skip....")
     else
         for (bam, lb) in zip(BAMs, IDs)
             if isfile("$OUTPUT_PATH/work/$lb.StringTie.gtf")
-                println("[REDENToR] $lb.StringTie.gtf is preexisted. Skip....")
+                println("[CREDENToR] $lb.StringTie.gtf is preexisted. Skip....")
             else
-                println("[REDENToR] Assembling $lb annotation....")
+                println("[CREDENToR] Assembling $lb annotation....")
                 runstr("stringtie $bam -p $THREAD -G $GTF -o $OUTPUT_PATH/work/$lb.StringTie.gtf.tmp $strandtag")
                 runstr("mv $OUTPUT_PATH/work/$lb.StringTie.gtf.tmp $OUTPUT_PATH/work/$lb.StringTie.gtf")
             end
         end
-        println("[REDENToR] Merging all assembled annotation....")
+        println("[CREDENToR] Merging all assembled annotation....")
         writedlm("$OUTPUT_PATH/work/stringtie_output_list.txt", f"$OUTPUT_PATH/work/$1.StringTie.gtf".(IDs))
         runstr("stringtie --merge -p $THREAD -o $OUTPUT_PATH/work/StringTieMerged.gtf.tmp -G $GTF $OUTPUT_PATH/work/stringtie_output_list.txt")
         runstr("mv $OUTPUT_PATH/work/StringTieMerged.gtf.tmp $OUTPUT_PATH/work/StringTieMerged.gtf")
     end
-    println("[REDENToR] Counting reads ....")
+    println("[CREDENToR] Counting reads ....")
     l=isfile.(f"$OUTPUT_PATH/work/$1-htseq.tsv".(IDs))
     for lb in IDs[l]
-        println("[REDENToR] $lb-htseq.tsv is preexisted. Skip....")
+        println("[CREDENToR] $lb-htseq.tsv is preexisted. Skip....")
     end
     strandarg=SEQSTRAND==:second ? "yes" : SEQSTRAND==:first ? "reverse" : "no"
     (THREAD>1 ? pmapwd : foreach)(IDs[.!l], BAMs[.!l], env=(strandarg, OUTPUT_PATH)) do lb, bam, strandarg, OUTPUT_PATH
@@ -119,7 +119,7 @@ end
 #}}
 #{{ prepare_output
 function prepare_output()
-    println("[REDNEToR] Preparing output....")
+    println("[CREDNEToR] Preparing output....")
     T=parseGTF("$OUTPUT_PATH/work/StringTieMerged.gtf")
     rename!(T, "geneid"=>"gene_STRid")
     exn=parseGTF(GTF)
@@ -219,9 +219,9 @@ end
 #}}
 #{{ print_version
 function print_version()
-    println("RETENDoR pipeline v0.1.0")
+    println("CRETENDoR pipeline v0.1.0")
 end
 #}}
 end
 
-REDENToR.main()
+CREDENToR.main()
