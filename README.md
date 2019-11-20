@@ -1,9 +1,9 @@
 # CREDENToR 
 _(**CR**yptic **E**lements’ **D**ifferential **E**xpression by de **N**ovo **T**ranscript**o**me **R**econstruction)_
 
-**A bioinformatics pipeline to detect and quantify cryptic transcripts (CTs) associated with retrotranspon repeats.**
+**A bioinformatics pipeline to detect and quantify cryptic transcripts associated with retrotranspon repeats.**
 
-This pipeline is coded in Julia language. Users need to map the RNA-seq data first (hg38 or mm10, usage of STAR is recommended). REDENToR subsequently assembles transcriptomes using StringTie, under guidance of transcript annotation (Ensembl is recommended). Then, all de novo assembled transcription annotations from the given samples are merged using “StringTie --merge”. HTSeq-counts are used to count the number of reads in known and novel genes. Non-coding transcripts (transcripts not overlapping annotated coding genes) in the merged transcription annotations are assigned as CTs when any of their exons overlaps with a retrotransposon repeat annotation (LTR, LINE, or SINE, based on RepeatMasker annotation from UCSC). If a transcript overlaps with >1 annotated repeat, the retrotransposon with the highest overlap is assigned to this CT.
+This pipeline is coded in Julia language. Users need to map the RNA-seq data first (hg38 or mm10, usage of STAR is recommended). REDENToR subsequently assembles transcriptomes using StringTie, under guidance of transcript annotation (Ensembl is recommended). Then, all de novo assembled transcription annotations from the given samples are merged using “StringTie --merge”. HTSeq-counts are used to count the number of reads in known and novel genes. Non-coding transcripts (transcripts not overlapping annotated coding genes) in the merged transcription annotations are assigned as cryptic transcripts when any of their exons overlaps with a retrotransposon repeat annotation (LTR, LINE, or SINE, based on RepeatMasker annotation from UCSC). If a transcript overlaps with >1 annotated repeat, the retrotransposon with the highest overlap is assigned to this cryptic transcripts.
 
 ## Dependencies
 ### Software
@@ -34,7 +34,7 @@ The Julia package below is required:
 - `-p` _\<thread_num\>_ Assign thread number. A Julia parameter that should be put between `julia` and `redentor.jl`. Optional (default=1).
 
 ### Output
-`RAT_info.tsv`, `RAT_readcount.tsv`, and `RAT_RPKM.tsv` are the information, read count, and read per kilobase of transcript, per million mapped reads (RPKM) file of all detected CTs, respectively. For the CT gene structure, please see `work/StringTieMerged.gtf`.
+`RAT_info.tsv`, `RAT_readcount.tsv`, and `RAT_RPKM.tsv` are the information, read count, and read per kilobase of transcript, per million mapped reads (RPKM) file of all detected cryptic transcripts, respectively. For the exon structure of cryptic transcripts, please see `work/StringTieMerged.gtf`.
 
 ### Tips
 - When the pipeline is interrupted and rerun in the same folder, the previously finished steps will be skipped.
