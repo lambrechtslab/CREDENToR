@@ -42,5 +42,8 @@ The Julia package below is required:
 ### Tips
 - When the pipeline is interrupted and rerun in the same folder, the previously finished steps will be skipped.
 
+### Citation
+D’Anna, F., Van Dyck, L., Xiong, J. et al. DNA methylation repels binding of hypoxia-inducible transcription factors to maintain tumor immunotolerance. Genome Biol 21, 182 (2020). https://doi.org/10.1186/s13059-020-02087-z
+
 ### Contacts
 Jieyi Xiong (jieyi.xiong[at]kuleuven.be); Bernard Thienpont (bernard.thienpont[at]kuleuven.be); Diether Lambrechts (diether.lambrechts[at]kuleuven.be).
