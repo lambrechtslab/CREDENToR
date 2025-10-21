@@ -1,3 +1,4 @@
+This repo is moved from Jieyi-DiLaKULeuven/CREDENToR.
 # CREDENToR 
 _(**CR**yptic **E**lements’ **D**ifferential **E**xpression by de **N**ovo **T**ranscript**o**me **R**econstruction)_
 
@@ -40,3 +41,6 @@ The Julia package below is required:
 
 ### Tips
 - When the pipeline is interrupted and rerun in the same folder, the previously finished steps will be skipped.
+
+### Contacts
+Jieyi Xiong (jieyi.xiong[at]kuleuven.be); Bernard Thienpont (bernard.thienpont@kuleuven.be); Diether Lambrechts (diether.lambrechts[at]kuleuven.be).
