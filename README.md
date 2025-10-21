@@ -43,4 +43,4 @@ The Julia package below is required:
 - When the pipeline is interrupted and rerun in the same folder, the previously finished steps will be skipped.
 
 ### Contacts
-Jieyi Xiong (jieyi.xiong[at]kuleuven.be); Bernard Thienpont (bernard.thienpont@kuleuven.be); Diether Lambrechts (diether.lambrechts[at]kuleuven.be).
+Jieyi Xiong (jieyi.xiong[at]kuleuven.be); Bernard Thienpont (bernard.thienpont[at]kuleuven.be); Diether Lambrechts (diether.lambrechts[at]kuleuven.be).
